@@ -1,0 +1,45 @@
+@keyframes borderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning-border-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ዙሪያው ላይ የሚሽከረከረው ደማቅ መስመር */
+.spinning-border-container::before {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: conic-gradient(#ffdc33, #db2777, #181201, #ffdc33);
+  animation: borderSpin 3s linear infinite;
+}
+
+/* ፎቶው ከውስጥ ሆኖ መስመሩን የሚያስተካክል */
+.spinning-border-container img {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+  
+}/* ዌብሳይቱ ሲከፈት ሜኑው ከላይ እንዳይደብቅ ማስተካከያ */
+body {
+  margin: 0;
+  padding-top: 60px; /* የ Navbar ቁመት ያህል ከላይ ክፍተት ይሰጣል */
+}
